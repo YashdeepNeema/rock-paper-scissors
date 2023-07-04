@@ -9,27 +9,27 @@ function playRound(playerSelection, computerSelection){
     playerSelection = playerSelection.toLowerCase()
     computerSelection = computerSelection.toLowerCase()
 
-    if (computerSelection == playerSelection) return `Tie!`
+    if (computerSelection == playerSelection) return `T`
 
     else if(computerSelection == 'paper'){
         if(playerSelection == 'scissors') {
-            return `You Won! ${playerSelection} beats ${computerSelection}` 
+            return `W` 
         }
-        return `You Lose! ${computerSelection} beats ${playerSelection}`
+        return `L`
     }
 
     else if(computerSelection == 'scissors'){
         if(playerSelection == 'rock') {
-            return `You Won! ${playerSelection} beats ${computerSelection}` 
+            return `W`  
         }
-        return `You Lose! ${computerSelection} beats ${playerSelection}`
+        return `L`
     }
 
     else if(computerSelection == 'rock'){
         if(playerSelection == 'paper') {
-            return `You Won! ${playerSelection} beats ${computerSelection}` 
+            return `W`  
         }
-        return `You Lose! ${computerSelection} beats ${playerSelection}`
+        return `L`
     }
 }
 
@@ -37,8 +37,34 @@ function playRound(playerSelection, computerSelection){
 
 function game(n){
     let i = 1;
+    let playerScore = 0;
+    let computerScore = 0;
+    let tieScore = 0;
     while (i <= n){
         let playerSelection = prompt(`Round: ${i} \nYour Choice?`)
+
+        let round = playRound(playerSelection, getComputerChoice(choices))
+        
+        if(round == 'W'){
+            playerScore++
+        }
+        else if (round == 'L'){
+            computerScore++
+        }
+        else if (round == 'T'){
+            tieScore++
+        }
         i++;
     }
+    if (playerScore == computerScore){
+        alert(`It's a Tie! \nYour score: ${playerScore}\nComputer Score: ${computerScore}\nTies: ${tieScore}`)
+    }
+    else if (playerScore > computerScore) {
+        alert(`You Won! \nYour score: ${playerScore}\nComputer Score: ${computerScore}\nTies: ${tieScore}`)
+    }
+    else{
+        alert(`You Lose! \nYour score: ${playerScore}\nComputer Score: ${computerScore}\nTies: ${tieScore}`)
+    }
 }
+
+game(5)
