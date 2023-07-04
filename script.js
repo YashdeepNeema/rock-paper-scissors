@@ -33,3 +33,12 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
+
+
+function game(n){
+    let i = 1;
+    while (i <= n){
+        let playerSelection = prompt(`Round: ${i} \nYour Choice?`)
+        i++;
+    }
+}
