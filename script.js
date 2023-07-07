@@ -35,13 +35,13 @@ function playRound(playerSelection, computerSelection){
 
 
 
-function game(n){
+function game(n, playerSelection){
     let i = 1;
     let playerScore = 0;
     let computerScore = 0;
     let tieScore = 0;
     while (i <= n){
-        let playerSelection = prompt(`Round: ${i} \nYour Choice?`)
+        //let playerSelection = prompt(`Round: ${i} \nYour Choice?`)
 
         let round = playRound(playerSelection, getComputerChoice(choices))
         
@@ -67,4 +67,11 @@ function game(n){
     }
 }
 
-game(5)
+const buttons = document.querySelectorAll('button')
+
+buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        const result = playRound(`${btn.id}`, getComputerChoice(choices))
+        alert(result)
+    })
+})
